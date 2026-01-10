@@ -1,11 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Risebit - Desenvolvimento de Software Sob Medida</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    primary: "#f97316",
+                    secondary: "#2d343e",
+                    "background-light": "#f8fafc",
+                    "background-dark": "#0f172a",
+                },
+                fontFamily: {
+                    display: ["Inter", "sans-serif"],
+                    sans: ["Inter", "sans-serif"],
+                },
+                borderRadius: {
+                    DEFAULT: "0.75rem",
+                },
+            },
+        },
+    };
+</script>
+<style type="text/tailwindcss">
+    @layer base {
+        body { 
+            @apply font-sans antialiased bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100;
+            min-height: 100dvh;
+        }
+    }
+    .glass-header {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+    .glass-element {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .dark .glass-element {
+        background: rgba(30, 41, 59, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .mesh-gradient {
+        background-image: 
+            radial-gradient(at 0% 0%, rgba(249, 115, 22, 0.15) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(249, 115, 22, 0.1) 0px, transparent 50%),
+            radial-gradient(at 0% 100%, rgba(59, 130, 246, 0.05) 0px, transparent 50%);
+    }
+</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+</style>
 </head>
-<body>
-    <h1>Hello Word</h1>
+<body class="mesh-gradient min-h-screen overflow-x-hidden">
+<!-- Header -->
+<header class="px-4 sm:px-6 pt-10 pb-8">
+    <div class="flex items-center justify-between mb-12 w-full">
+        <div class="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-shrink">
+            <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                <img alt="Risebit Logo" class="h-7 sm:h-8 w-auto flex-shrink-0" src="./img/risebit-logo.jpeg"/>
+                <span class="font-extrabold text-base sm:text-xl tracking-tight text-secondary dark:text-white truncate">Risebit</span>
+            </a>
+        </div>
+        <a href="serviceSection.html" class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-slate-600 dark:text-slate-300 shadow-sm flex-shrink-0">
+            <span class="material-symbols-outlined text-[20px] sm:text-[22px]">menu</span>
+        </a>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="px-6 pb-32">
+    <div class="space-y-6 max-w-md mx-auto text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-white/60 dark:bg-slate-800/40 backdrop-blur-md text-primary border border-primary/20 text-xs font-bold tracking-wider uppercase">
+            Software de Alta Performance
+        </div>
+        
+        <!-- Heading -->
+        <h1 class="text-[2.5rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
+            Desenvolvemos softwares sob medida para <span class="text-primary">escalar seu negócio</span>
+        </h1>
+        
+        <!-- Description -->
+        <p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-[300px] mx-auto">
+            Soluções inovadoras e escaláveis para transformar suas ideias em realidade digital com tecnologia de ponta.
+        </p>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-col gap-3 pt-4">
+            <a href="contact.html" class="bg-primary hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-2xl shadow-xl shadow-primary/20 transition-all active:scale-95 flex items-center justify-center gap-2">
+                Solicitar Orçamento
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+            <a href="products.html" class="glass-element text-slate-700 dark:text-slate-200 font-semibold py-4 px-8 rounded-2xl transition-all active:scale-95">
+                Ver Portfólio
+            </a>
+        </div>
+        
+
+    </div>
+</main>
+
+
+
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800/50 px-2 sm:px-4 py-3 sm:py-4 flex justify-between items-center z-50 w-full max-w-full overflow-hidden">
+    <a href="index.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-primary flex-1 min-w-0">
+        <span class="material-symbols-outlined text-[20px] sm:text-[22px]">home</span>
+        <span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Início</span>
+    </a>
+    <a href="WhatWeDo.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 dark:text-slate-500 flex-1 min-w-0">
+        <span class="material-symbols-outlined text-[20px] sm:text-[22px]">layers</span>
+        <span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Serviços</span>
+    </a>
+    <a href="whyChoose.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 dark:text-slate-500 flex-1 min-w-0">
+        <span class="material-symbols-outlined text-[20px] sm:text-[22px]">account_tree</span>
+        <span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Diferenciais</span>
+    </a>
+    <a href="products.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 dark:text-slate-500 flex-1 min-w-0">
+        <span class="material-symbols-outlined text-[20px] sm:text-[22px]">rocket_launch</span>
+        <span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Soluções</span>
+    </a>
+    <a href="contact.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 dark:text-slate-500 flex-1 min-w-0">
+        <span class="material-symbols-outlined text-[20px] sm:text-[22px]">chat_bubble</span>
+        <span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Contato</span>
+    </a>
+</nav>
+
 </body>
 </html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Risebit - Por que nos escolher</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#F46E16",
+                        "surface-light": "#F8FAFC",
+                        "border-light": "#F1F5F9",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-white text-slate-800 antialiased;
+            }
+        }
+        .feature-card {
+            @apply bg-white border border-slate-100 rounded-[2rem] p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.04)] transition-all duration-300;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen bg-[#FAFBFC] overflow-x-hidden">
+<header class="px-4 sm:px-6 pt-10 pb-8">
+<div class="flex items-center justify-between mb-12 w-full">
+<div class="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-shrink">
+<a href="index.html" class="flex items-center gap-1.5 sm:gap-2 min-w-0">
+<img alt="Risebit Logo" class="h-7 sm:h-8 w-auto flex-shrink-0" src="./img/risebit-logo.jpeg"/>
+<span class="font-extrabold text-base sm:text-xl tracking-tight text-slate-900 truncate">Risebit</span>
+</a>
+</div>
+<a href="serviceSection.html" class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white border border-slate-100 text-slate-600 shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">menu</span>
+</a>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<div class="h-[1px] w-8 bg-primary"></div>
+<span class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary">Diferenciais</span>
+</div>
+<h1 class="text-[2.5rem] font-bold leading-[1.1] tracking-tight text-slate-900">
+                Por que escolher a <span class="text-primary">Risebit</span>
+</h1>
+<p class="text-slate-500 text-base leading-relaxed max-w-[300px]">
+                Combinamos excelência técnica com visão estratégica para entregar resultados extraordinários.
+            </p>
+</div>
+</header>
+<main class="px-6 pb-32">
+<div class="grid grid-cols-1 gap-4">
+<div class="feature-card">
+<div class="w-12 h-12 mb-5 rounded-2xl bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">developer_mode</span>
+</div>
+<h3 class="text-lg font-bold mb-2 text-slate-900">Tecnologia Moderna</h3>
+<p class="text-slate-500 text-sm leading-relaxed">
+                    Utilizamos as stacks mais atuais e performáticas do mercado para garantir longevidade ao seu produto.
+                </p>
+</div>
+<div class="feature-card">
+<div class="w-12 h-12 mb-5 rounded-2xl bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">verified_user</span>
+</div>
+<h3 class="text-lg font-bold mb-2 text-slate-900">Segurança</h3>
+<p class="text-slate-500 text-sm leading-relaxed">
+                    Proteção de dados e conformidade técnica em cada linha de código, priorizando a integridade da sua operação.
+                </p>
+</div>
+<div class="feature-card">
+<div class="w-12 h-12 mb-5 rounded-2xl bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">signal_cellular_alt</span>
+</div>
+<h3 class="text-lg font-bold mb-2 text-slate-900">Escala</h3>
+<p class="text-slate-500 text-sm leading-relaxed">
+                    Arquiteturas resilientes preparadas para crescer junto com o seu volume de usuários e transações.
+                </p>
+</div>
+<div class="feature-card">
+<div class="w-12 h-12 mb-5 rounded-2xl bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">groups</span>
+</div>
+<h3 class="text-lg font-bold mb-2 text-slate-900">Time Especializado</h3>
+<p class="text-slate-500 text-sm leading-relaxed">
+                    Engenheiros sêniores comprometidos com a qualidade técnica e o sucesso do seu modelo de negócio.
+                </p>
+</div>
+</div>
+<div class="mt-10">
+<div class="bg-white border border-slate-100 p-8 rounded-[2.5rem] shadow-sm relative overflow-hidden">
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
+<h2 class="text-xl font-bold mb-3 text-slate-900">Pronto para inovar?</h2>
+<p class="text-slate-500 text-sm mb-6 leading-relaxed">Leve sua empresa para o próximo nível com engenharia de software de elite.</p>
+<a class="inline-flex items-center justify-center w-full py-4 px-6 bg-[#F46E16] hover:bg-orange-600 text-white font-bold rounded-2xl shadow-lg shadow-primary/20 active:scale-[0.98] transition-all" href="contact.html" style="background-color: #F46E16;">
+                    Falar com Especialista
+                </a>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-slate-100 px-2 sm:px-4 py-3 sm:py-4 flex justify-between items-center z-50 w-full max-w-full overflow-hidden">
+<a href="index.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 flex-1 min-w-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">home</span>
+<span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Início</span>
+</a>
+<a href="WhatWeDo.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 flex-1 min-w-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">layers</span>
+<span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Serviços</span>
+</a>
+<a href="whyChoose.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-primary flex-1 min-w-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px] fill-[1]">account_tree</span>
+<span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Diferenciais</span>
+</a>
+<a href="products.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 flex-1 min-w-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">rocket_launch</span>
+<span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Soluções</span>
+</a>
+<a href="contact.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 flex-1 min-w-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">chat_bubble</span>
+<span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Contato</span>
+</a>
+</nav>
+
+</body></html>

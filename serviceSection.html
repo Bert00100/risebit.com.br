@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Risebit - Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#F46E16",
+                        "surface-light": "#F8FAFC",
+                        "border-light": "#F1F5F9",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        display: ["Poppins", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-white text-slate-800 antialiased overflow-hidden;
+            }
+        }
+        .nav-item {
+            @apply flex items-center justify-between w-full py-4 px-2 border-b border-slate-50 transition-all duration-200 active:bg-slate-50;
+        }
+        .nav-text {
+            @apply text-lg font-medium tracking-tight;
+        }
+        .nav-icon {
+            @apply text-slate-300 transition-colors;
+        }
+        .active-nav-item .nav-text {
+            @apply text-primary font-bold;
+        }
+        .active-nav-item .nav-icon {
+            @apply text-primary;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="h-screen w-full flex flex-col">
+<header class="px-6 pt-10 pb-6 flex items-center justify-between bg-white">
+<a href="index.html"><img alt="Risebit Logo" class="h-8 w-auto" src="./img/risebit-logo.jpeg"/></a>
+<a href="javascript:history.back()" class="w-12 h-12 flex items-center justify-center rounded-full bg-slate-50 text-slate-900 border border-slate-100">
+<span class="material-symbols-outlined text-2xl">close</span>
+</a>
+</header>
+<main class="flex-1 px-6 pt-8 overflow-y-auto">
+<nav class="space-y-2">
+<a class="nav-item active-nav-item" href="index.html">
+<span class="nav-text">Início</span>
+<span class="material-symbols-outlined nav-icon">home</span>
+</a>
+<a class="nav-item" href="WhatWeDo.html">
+<span class="nav-text">Serviços</span>
+<span class="material-symbols-outlined nav-icon">layers</span>
+</a>
+<a class="nav-item" href="whyChoose.html">
+<span class="nav-text">Diferenciais</span>
+<span class="material-symbols-outlined nav-icon">account_tree</span>
+</a>
+<a class="nav-item" href="products.html">
+<span class="nav-text">Soluções</span>
+<span class="material-symbols-outlined nav-icon">rocket_launch</span>
+</a>
+<a class="nav-item border-none" href="contact.html">
+<span class="nav-text">Contato</span>
+<span class="material-symbols-outlined nav-icon">chat_bubble</span>
+</a>
+</nav>
+<div class="mt-12 p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 relative overflow-hidden">
+<div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+<p class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2">Pronto para começar?</p>
+<h3 class="text-xl font-bold text-slate-900 mb-6">Transforme sua ideia em software real.</h3>
+<a class="flex items-center justify-center w-full py-4 bg-primary text-white font-bold rounded-2xl shadow-lg shadow-primary/20" href="contact.html">
+                Falar com Especialista
+            </a>
+</div>
+</main>
+<footer class="px-8 py-10 border-t border-slate-50 bg-white">
+<div class="flex items-center justify-center gap-8 text-slate-400">
+<a class="p-2 bg-slate-50 rounded-lg hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="p-2 bg-slate-50 rounded-lg hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">mail</span>
+</a>
+<a class="p-2 bg-slate-50 rounded-lg hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+</div>
+<p class="text-center text-[11px] text-slate-400 mt-6 font-medium">© 2024 RISEBIT. TODOS OS DIREITOS RESERVADOS.</p>
+</footer>
+
+</body></html>

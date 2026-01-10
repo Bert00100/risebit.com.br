@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Risebit - Nossos Serviços</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#F46E16",
+                        "surface-light": "#F8FAFC",
+                        "border-light": "#E2E8F0",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-white text-slate-800 antialiased;
+            }
+        }
+        .service-card {
+            @apply bg-white border border-slate-100 rounded-[2rem] p-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen overflow-x-hidden">
+<header class="px-4 sm:px-6 pt-10 pb-8">
+<div class="flex items-center justify-between mb-12 w-full">
+<div class="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-shrink">
+<a href="index.html" class="flex items-center gap-1.5 sm:gap-2 min-w-0">
+<img alt="Risebit Logo" class="h-7 sm:h-8 w-auto flex-shrink-0" src="./img/risebit-logo.jpeg"/>
+<span class="font-extrabold text-base sm:text-xl tracking-tight text-slate-900 truncate">Risebit</span>
+</a>
+</div>
+<a href="serviceSection.html" class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white border border-slate-100 text-slate-600 shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">menu</span>
+</a>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<div class="h-[1px] w-8 bg-primary"></div>
+<span class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary">
+                    Nossas Especialidades
+                </span>
+</div>
+<h1 class="text-[2.5rem] font-bold leading-[1.1] tracking-tight text-slate-900">
+                O que <span class="text-primary">fazemos</span>
+</h1>
+<p class="text-slate-500 text-base leading-relaxed max-w-[280px]">
+                Engenharia de software de alta performance para empresas que buscam inovação.
+            </p>
+</div>
+</header>
+<main class="px-6 pb-32">
+<div class="grid grid-cols-1 gap-5">
+<div class="service-card group">
+<div class="w-12 h-12 mb-6 rounded-2xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-2xl">terminal</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-slate-900">Software sob demanda</h3>
+<p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    Sistemas personalizados e apps desenhados para escalar seu negócio com tecnologia de ponta.
+                </p>
+<div class="flex items-center text-primary font-bold text-xs tracking-wider uppercase">
+                    Explorar solução <span class="material-symbols-outlined text-base ml-2">trending_flat</span>
+</div>
+</div>
+<div class="service-card group">
+<div class="w-12 h-12 mb-6 rounded-2xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-2xl">precision_manufacturing</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-slate-900">Automação de processos</h3>
+<p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    Redução de custos operacionais através da inteligência e automação de fluxos de trabalho.
+                </p>
+<div class="flex items-center text-primary font-bold text-xs tracking-wider uppercase">
+                    Explorar solução <span class="material-symbols-outlined text-base ml-2">trending_flat</span>
+</div>
+</div>
+<div class="service-card group">
+<div class="w-12 h-12 mb-6 rounded-2xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-2xl">account_tree</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-slate-900">Integração de sistemas</h3>
+<p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    Unificamos seu ecossistema digital para que os dados fluam com segurança e agilidade.
+                </p>
+<div class="flex items-center text-primary font-bold text-xs tracking-wider uppercase">
+                    Explorar solução <span class="material-symbols-outlined text-base ml-2">trending_flat</span>
+</div>
+</div>
+<div class="service-card group">
+<div class="w-12 h-12 mb-6 rounded-2xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-2xl">biotech</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-slate-900">IA e análise de dados</h3>
+<p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    Decisões baseadas em dados com algoritmos de IA feitos sob medida para sua operação.
+                </p>
+<div class="flex items-center text-primary font-bold text-xs tracking-wider uppercase">
+                    Explorar solução <span class="material-symbols-outlined text-base ml-2">trending_flat</span>
+</div>
+</div>
+</div>
+<div class="mt-12">
+<div class="bg-slate-900 p-10 rounded-[2.5rem] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+<h2 class="text-2xl font-bold mb-4 text-white">Pronto para o próximo nível?</h2>
+<p class="text-slate-400 text-sm mb-8 leading-relaxed">Fale com nossos especialistas e descubra como podemos acelerar seu projeto.</p>
+<a class="inline-flex items-center justify-center w-full py-4 px-6 bg-[#F46E16] hover:bg-orange-600 text-white font-bold rounded-2xl shadow-lg shadow-primary/20 active:scale-95 transition-all" href="contact.html" style="background-color: #F46E16;">
+                    Agendar Consultoria
+                </a>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-slate-100 px-2 sm:px-4 py-3 sm:py-4 flex justify-between items-center z-50 w-full max-w-full overflow-hidden">
+<a href="index.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 flex-1 min-w-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">home</span>
+<span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Início</span>
+</a>
+<a href="WhatWeDo.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-primary flex-1 min-w-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px] fill-[1]">layers</span>
+<span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Serviços</span>
+</a>
+<a href="whyChoose.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 flex-1 min-w-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">account_tree</span>
+<span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Diferenciais</span>
+</a>
+<a href="products.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 flex-1 min-w-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">rocket_launch</span>
+<span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Soluções</span>
+</a>
+<a href="contact.html" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 flex-1 min-w-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">chat_bubble</span>
+<span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest">Contato</span>
+</a>
+</nav>
+
+</body></html>
