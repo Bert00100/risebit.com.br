@@ -289,6 +289,7 @@
             justify-content: center;
             margin-bottom: 1.5rem;
             box-shadow: 0 10px 30px rgba(244, 110, 22, 0.2);
+            flex-shrink: 0;
         }
 
         .service-icon .material-symbols-outlined {
@@ -301,6 +302,7 @@
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--dark-black);
+            flex-shrink: 0;
         }
 
         .service-description {
@@ -308,6 +310,7 @@
             line-height: 1.8;
             margin-bottom: 1.5rem;
             flex-grow: 1;
+            min-height: 100px;
         }
 
         .service-link {
@@ -318,6 +321,8 @@
             align-items: center;
             gap: 0.5rem;
             transition: gap 0.3s ease;
+            margin-top: auto;
+            flex-shrink: 0;
         }
 
         .service-link:hover {
@@ -355,6 +360,7 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
+            flex-shrink: 0;
         }
 
         .feature-icon .material-symbols-outlined {
@@ -367,11 +373,13 @@
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--dark-black);
+            flex-shrink: 0;
         }
 
         .feature-description {
             color: var(--text-gray);
             line-height: 1.7;
+            flex-grow: 1;
         }
 
         /* Solutions Section */
@@ -412,6 +420,24 @@
         .solution-card:hover::after {
             width: 200px;
             height: 200px;
+        }
+
+        .solution-card .service-icon {
+            flex-shrink: 0;
+        }
+
+        .solution-card .service-title {
+            flex-shrink: 0;
+        }
+
+        .solution-card .service-description {
+            flex-grow: 1;
+            min-height: 100px;
+        }
+
+        .solution-card .service-link {
+            margin-top: auto;
+            flex-shrink: 0;
         }
 
         /* CTA Section */
