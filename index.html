@@ -1,797 +1,872 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Risebit - Desenvolvimento de microsserviços e software sob medida. Excelência em engenharia de software para empresas que buscam inovação e resultados.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Risebit - Desenvolvimento de microsserviços e software sob medida. Excelência em engenharia de software para empresas que buscam inovação e resultados."
+    />
     <title>Risebit | Desenvolvimento de Software de Alta Performance</title>
-    
+
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols_Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols_Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet"
+    />
+
     <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <style>
-        :root {
-            --primary-orange: #F46E16;
-            --dark-black: #000000;
-            --medium-gray: #4a4a4a;
-            --light-gray: #f5f5f5;
-            --border-gray: #e0e0e0;
-            --text-gray: #666666;
-            --text-dark: #1a1a1a;
-        }
+      :root {
+        --primary-orange: #f46e16;
+        --dark-black: #000000;
+        --medium-gray: #4a4a4a;
+        --light-gray: #f5f5f5;
+        --border-gray: #e0e0e0;
+        --text-gray: #666666;
+        --text-dark: #1a1a1a;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            overflow-x: hidden;
-            background-color: #ffffff;
-        }
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-dark);
+        overflow-x: hidden;
+        background-color: #ffffff;
+      }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-        }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+      }
 
-        /* Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            padding: 1.2rem 0;
-            transition: all 0.3s ease;
-        }
+      /* Navbar */
+      .navbar {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        padding: 1.2rem 0;
+        transition: all 0.3s ease;
+      }
 
-        .navbar-brand {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--dark-black) !important;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+      .navbar-brand {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: var(--dark-black) !important;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
 
-        .navbar-brand img {
-            height: 40px;
-            width: auto;
-        }
+      .navbar-brand img {
+        height: 40px;
+        width: auto;
+      }
 
-        .nav-link {
-            color: var(--text-gray) !important;
-            font-weight: 500;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
+      .nav-link {
+        color: var(--text-gray) !important;
+        font-weight: 500;
+        margin: 0 1rem;
+        transition: color 0.3s ease;
+        position: relative;
+      }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-orange);
-            transition: width 0.3s ease;
-        }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-orange);
+        transition: width 0.3s ease;
+      }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
+      .nav-link:hover::after {
+        width: 100%;
+      }
 
-        .nav-link:hover {
-            color: var(--primary-orange) !important;
-        }
+      .nav-link:hover {
+        color: var(--primary-orange) !important;
+      }
 
-        .btn-primary-custom {
-            background: var(--primary-orange);
-            border: none;
-            padding: 0.75rem 2rem;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-        }
+      .btn-primary-custom {
+        background: var(--primary-orange);
+        border: none;
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+      }
 
-        .btn-primary-custom:hover {
-            background: #d35a0a;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(244, 110, 22, 0.3);
-            color: white;
-        }
+      .btn-primary-custom:hover {
+        background: #d35a0a;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(244, 110, 22, 0.3);
+        color: white;
+      }
 
-        .btn-outline-custom {
-            border: 2px solid var(--primary-orange);
-            color: var(--primary-orange);
-            padding: 0.75rem 2rem;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            background: transparent;
-            text-decoration: none;
-            display: inline-block;
-        }
+      .btn-outline-custom {
+        border: 2px solid var(--primary-orange);
+        color: var(--primary-orange);
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        background: transparent;
+        text-decoration: none;
+        display: inline-block;
+      }
 
-        .btn-outline-custom:hover {
-            background: var(--primary-orange);
-            color: white;
-            transform: translateY(-2px);
-        }
+      .btn-outline-custom:hover {
+        background: var(--primary-orange);
+        color: white;
+        transform: translateY(-2px);
+      }
 
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-            position: relative;
-            overflow: hidden;
-            padding: 8rem 0 6rem;
-        }
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+        position: relative;
+        overflow: hidden;
+        padding: 8rem 0 6rem;
+      }
 
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(244, 110, 22, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(244, 110, 22, 0.15) 0%, transparent 50%);
-        }
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(244, 110, 22, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 50%,
+            rgba(244, 110, 22, 0.15) 0%,
+            transparent 50%
+          );
+      }
 
-        .hero-section .container {
-            position: relative;
-            z-index: 1;
-        }
+      .hero-section .container {
+        position: relative;
+        z-index: 1;
+      }
 
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            color: white;
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
+      .hero-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        color: white;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
 
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: white;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+      }
+
+      .hero-image {
+        position: relative;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* Stats Section */
+      .stats-section {
+        background: var(--dark-black);
+        color: white;
+        padding: 4rem 0;
+      }
+
+      .stat-card {
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--primary-orange);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+      }
+
+      /* Services Section */
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-gray);
+        margin-bottom: 4rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .service-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        height: 100%;
+        border: 1px solid var(--border-gray);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 0;
+        background: var(--primary-orange);
+        transition: height 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-card:hover::before {
+        height: 100%;
+      }
+
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--primary-orange), #ff8c42);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 10px 30px rgba(244, 110, 22, 0.2);
+        flex-shrink: 0;
+      }
+
+      .service-icon .material-symbols-outlined {
+        font-size: 2rem;
+        color: white;
+      }
+
+      .service-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--dark-black);
+        flex-shrink: 0;
+      }
+
+      .service-description {
+        color: var(--text-gray);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+        min-height: 100px;
+      }
+
+      .service-link {
+        color: var(--primary-orange);
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: gap 0.3s ease;
+        margin-top: auto;
+        flex-shrink: 0;
+      }
+
+      .service-link:hover {
+        gap: 1rem;
+      }
+
+      /* Why Choose Section */
+      .why-choose-section {
+        background: var(--light-gray);
+        padding: 6rem 0;
+      }
+
+      .feature-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        height: 100%;
+        border: 1px solid var(--border-gray);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .feature-card:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        transform: translateY(-5px);
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(244, 110, 22, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .feature-icon .material-symbols-outlined {
+        font-size: 2rem;
+        color: var(--primary-orange);
+      }
+
+      .feature-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--dark-black);
+        flex-shrink: 0;
+      }
+
+      .feature-description {
+        color: var(--text-gray);
+        line-height: 1.7;
+        flex-grow: 1;
+      }
+
+      /* Solutions Section */
+      .solutions-section {
+        padding: 6rem 0;
+      }
+
+      .solution-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem;
+        height: 100%;
+        border: 2px solid var(--border-gray);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .solution-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(
+          circle,
+          rgba(244, 110, 22, 0.1),
+          transparent
+        );
+        transition: all 0.4s ease;
+      }
+
+      .solution-card:hover {
+        border-color: var(--primary-orange);
+        transform: scale(1.02);
+        box-shadow: 0 25px 70px rgba(244, 110, 22, 0.15);
+      }
+
+      .solution-card:hover::after {
+        width: 200px;
+        height: 200px;
+      }
+
+      .solution-card .service-icon {
+        flex-shrink: 0;
+      }
+
+      .solution-card .service-title {
+        flex-shrink: 0;
+      }
+
+      .solution-card .service-description {
+        flex-grow: 1;
+        min-height: 100px;
+      }
+
+      .solution-card .service-link {
+        margin-top: auto;
+        flex-shrink: 0;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(
+          135deg,
+          var(--dark-black) 0%,
+          var(--medium-gray) 100%
+        );
+        padding: 6rem 0;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(244, 110, 22, 0.2),
+          transparent
+        );
+        border-radius: 50%;
+      }
+
+      .cta-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta-description {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        margin-bottom: 2.5rem;
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--dark-black);
+        color: white;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer h5 {
+        color: white;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-link {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.75rem;
+        transition: color 0.3s ease;
+      }
+
+      .footer-link:hover {
+        color: var(--primary-orange);
+      }
+
+      .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        margin-right: 0.5rem;
+        transition: all 0.3s ease;
+        color: white;
+        text-decoration: none;
+      }
+
+      .social-icon:hover {
+        background: var(--primary-orange);
+        transform: translateY(-3px);
+        color: white;
+      }
+
+      /* Contact Form */
+      .contact-form {
+        background: white;
+        border-radius: 20px;
+        padding: 3rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-control {
+        border: 2px solid var(--border-gray);
+        padding: 0.875rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary-orange);
+        box-shadow: 0 0 0 0.25rem rgba(244, 110, 22, 0.1);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: white;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
+          font-size: 2.5rem;
         }
 
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
+        .section-title {
+          font-size: 2rem;
         }
 
-        .hero-image {
-            position: relative;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Stats Section */
-        .stats-section {
-            background: var(--dark-black);
-            color: white;
-            padding: 4rem 0;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
+        .hero-section {
+          padding: 5rem 0 3rem;
         }
 
         .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-orange);
-            margin-bottom: 0.5rem;
+          font-size: 2rem;
         }
+      }
 
-        .stat-label {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 500;
-        }
+      /* Scroll Animation */
+      [data-aos] {
+        pointer-events: none;
+      }
 
-        /* Services Section */
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            margin-bottom: 4rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2.5rem;
-            height: 100%;
-            border: 1px solid var(--border-gray);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background: var(--primary-orange);
-            transition: height 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-card:hover::before {
-            height: 100%;
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary-orange), #ff8c42);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px rgba(244, 110, 22, 0.2);
-            flex-shrink: 0;
-        }
-
-        .service-icon .material-symbols-outlined {
-            font-size: 2rem;
-            color: white;
-        }
-
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--dark-black);
-            flex-shrink: 0;
-        }
-
-        .service-description {
-            color: var(--text-gray);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-            min-height: 100px;
-        }
-
-        .service-link {
-            color: var(--primary-orange);
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s ease;
-            margin-top: auto;
-            flex-shrink: 0;
-        }
-
-        .service-link:hover {
-            gap: 1rem;
-        }
-
-        /* Why Choose Section */
-        .why-choose-section {
-            background: var(--light-gray);
-            padding: 6rem 0;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            height: 100%;
-            border: 1px solid var(--border-gray);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .feature-card:hover {
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(244, 110, 22, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .feature-icon .material-symbols-outlined {
-            font-size: 2rem;
-            color: var(--primary-orange);
-        }
-
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--dark-black);
-            flex-shrink: 0;
-        }
-
-        .feature-description {
-            color: var(--text-gray);
-            line-height: 1.7;
-            flex-grow: 1;
-        }
-
-        /* Solutions Section */
-        .solutions-section {
-            padding: 6rem 0;
-        }
-
-        .solution-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            height: 100%;
-            border: 2px solid var(--border-gray);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .solution-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(244, 110, 22, 0.1), transparent);
-            transition: all 0.4s ease;
-        }
-
-        .solution-card:hover {
-            border-color: var(--primary-orange);
-            transform: scale(1.02);
-            box-shadow: 0 25px 70px rgba(244, 110, 22, 0.15);
-        }
-
-        .solution-card:hover::after {
-            width: 200px;
-            height: 200px;
-        }
-
-        .solution-card .service-icon {
-            flex-shrink: 0;
-        }
-
-        .solution-card .service-title {
-            flex-shrink: 0;
-        }
-
-        .solution-card .service-description {
-            flex-grow: 1;
-            min-height: 100px;
-        }
-
-        .solution-card .service-link {
-            margin-top: auto;
-            flex-shrink: 0;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--dark-black) 0%, var(--medium-gray) 100%);
-            padding: 6rem 0;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(244, 110, 22, 0.2), transparent);
-            border-radius: 50%;
-        }
-
-        .cta-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-description {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 2.5rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark-black);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer h5 {
-            color: white;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-link {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.75rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--primary-orange);
-        }
-
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            margin-right: 0.5rem;
-            transition: all 0.3s ease;
-            color: white;
-            text-decoration: none;
-        }
-
-        .social-icon:hover {
-            background: var(--primary-orange);
-            transform: translateY(-3px);
-            color: white;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-control {
-            border: 2px solid var(--border-gray);
-            padding: 0.875rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-orange);
-            box-shadow: 0 0 0 0.25rem rgba(244, 110, 22, 0.1);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .hero-section {
-                padding: 5rem 0 3rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-        }
-
-        /* Scroll Animation */
-        [data-aos] {
-            pointer-events: none;
-        }
-
-        [data-aos].aos-animate {
-            pointer-events: auto;
-        }
+      [data-aos].aos-animate {
+        pointer-events: auto;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#home">
-                <img src="./img/risebit-logo.jpeg" alt="Risebit Logo">
-                Risebit
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Serviços</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#why-choose">Diferenciais</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#solutions">Soluções</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contato</a>
-                    </li>
-                    <li class="nav-item ms-3">
-                        <a href="#contact" class="btn-primary-custom">Solicitar Orçamento</a>
-                    </li>
-                </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand" href="#home">
+          <img src="./img/risebit-logo.jpeg" alt="Risebit Logo" />
+          Risebit
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Serviços</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#why-choose">Diferenciais</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#solutions">Soluções</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contato</a>
+            </li>
+            <li class="nav-item ms-3">
+              <a href="#contact" class="btn-primary-custom"
+                >Solicitar Orçamento</a
+              >
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <span class="hero-badge">🚀 Desenvolvimento de Alta Performance</span>
-                    <h1 class="hero-title">
-                        Microsserviços e Software <span style="color: var(--primary-orange);">Sob Medida</span>
-                    </h1>
-                    <p class="hero-subtitle">
-                        Transformamos desafios complexos em soluções escaláveis. Engenharia de software de excelência para empresas que buscam resultados concretos e inovação sustentável.
-                    </p>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="#contact" class="btn-primary-custom">
-                            Iniciar Projeto
-                        </a>
-                        <a href="#services" class="btn-outline-custom">
-                            Nossos Serviços
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left">
-                    <div class="hero-image text-center">
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" 
-                             alt="Team Working" 
-                             class="img-fluid rounded-4 shadow-lg"
-                             style="max-width: 100%; border-radius: 24px;">
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <span class="hero-badge"
+              >🚀 Desenvolvimento de Alta Performance</span
+            >
+            <h1 class="hero-title">
+              Microsserviços e Software
+              <span style="color: var(--primary-orange)">Sob Medida</span>
+            </h1>
+            <p class="hero-subtitle">
+              Transformamos desafios complexos em soluções escaláveis.
+              Engenharia de software de excelência para empresas que buscam
+              resultados concretos e inovação sustentável.
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="#contact" class="btn-primary-custom">
+                Iniciar Projeto
+              </a>
+              <a href="#services" class="btn-outline-custom">
+                Nossos Serviços
+              </a>
             </div>
+          </div>
+          <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left">
+            <div class="hero-image text-center">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop"
+                alt="Team Working"
+                class="img-fluid rounded-4 shadow-lg"
+                style="max-width: 100%; border-radius: 24px"
+              />
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Stats Section -->
     <section class="stats-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="0">
-                    <div class="stat-card">
-                        <div class="stat-number">150+</div>
-                        <div class="stat-label">Projetos Entregues</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stat-card">
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">Satisfação de Clientes</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-card">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">Anos de Experiência</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stat-card">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Suporte Dedicado</div>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="0">
+            <div class="stat-card">
+              <div class="stat-number">150+</div>
+              <div class="stat-label">Projetos Entregues</div>
             </div>
+          </div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-card">
+              <div class="stat-number">98%</div>
+              <div class="stat-label">Satisfação de Clientes</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-card">
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Anos de Experiência</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-card">
+              <div class="stat-number">24/7</div>
+              <div class="stat-label">Suporte Dedicado</div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-5" style="padding: 6rem 0;">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title" data-aos="fade-up">Nossos Serviços</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                    Soluções completas em desenvolvimento de software para impulsionar seu negócio
-                </p>
-            </div>
-            <div id="services-container" class="row g-4"></div>
+    <section id="services" class="py-5" style="padding: 6rem 0">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title" data-aos="fade-up">Nossos Serviços</h2>
+          <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+            Soluções completas em desenvolvimento de software para impulsionar
+            seu negócio
+          </p>
         </div>
+        <div id="services-container" class="row g-4"></div>
+      </div>
     </section>
 
     <!-- Why Choose Section -->
     <section id="why-choose" class="why-choose-section">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title" data-aos="fade-up">Por Que Escolher a Risebit</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                    Experiência, tecnologia e compromisso com resultados excepcionais
-                </p>
-            </div>
-            <div id="features-container" class="row g-4"></div>
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title" data-aos="fade-up">
+            Por Que Escolher a Risebit
+          </h2>
+          <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+            Experiência, tecnologia e compromisso com resultados excepcionais
+          </p>
         </div>
+        <div id="features-container" class="row g-4"></div>
+      </div>
     </section>
 
     <!-- Solutions Section -->
     <section id="solutions" class="solutions-section">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title" data-aos="fade-up">Soluções Estratégicas</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                    Produtos personalizados para acelerar a transformação digital da sua empresa
-                </p>
-            </div>
-            <div id="solutions-container" class="row g-4"></div>
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title" data-aos="fade-up">
+            Soluções Estratégicas
+          </h2>
+          <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+            Produtos personalizados para acelerar a transformação digital da sua
+            empresa
+          </p>
         </div>
+        <div id="solutions-container" class="row g-4"></div>
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container text-center position-relative" style="z-index: 1;">
-            <div class="row justify-content-center">
-                <div class="col-lg-8" data-aos="zoom-in">
-                    <h2 class="cta-title">Pronto para Transformar Seu Negócio?</h2>
-                    <p class="cta-description">
-                        Agende uma consultoria gratuita e descubra como podemos acelerar seus resultados com tecnologia de ponta
-                    </p>
-                    <a href="#contact" class="btn-primary-custom btn-lg">
-                        Falar com Especialista
-                    </a>
-                </div>
-            </div>
+      <div class="container text-center position-relative" style="z-index: 1">
+        <div class="row justify-content-center">
+          <div class="col-lg-8" data-aos="zoom-in">
+            <h2 class="cta-title">Pronto para Transformar Seu Negócio?</h2>
+            <p class="cta-description">
+              Agende uma consultoria gratuita e descubra como podemos acelerar
+              seus resultados com tecnologia de ponta
+            </p>
+            <a href="#contact" class="btn-primary-custom btn-lg">
+              Falar com Especialista
+            </a>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5" style="padding: 6rem 0; background: var(--light-gray);">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact-form" data-aos="fade-up">
-                        <h2 class="section-title mb-4 text-center">Entre em Contato</h2>
-                        <p class="text-center text-muted mb-5">Preencha o formulário e nossa equipe entrará em contato em até 24 horas</p>
-                        <div id="contact-form-container"></div>
-                    </div>
-                </div>
+    <section
+      id="contact"
+      class="py-5"
+      style="padding: 6rem 0; background: var(--light-gray)"
+    >
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="contact-form" data-aos="fade-up">
+              <h2 class="section-title mb-4 text-center">Entre em Contato</h2>
+              <p class="text-center text-muted mb-5">
+                Preencha o formulário e nossa equipe entrará em contato em até
+                24 horas
+              </p>
+              <div id="contact-form-container"></div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5>Risebit</h5>
-                    <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.8;">
-                        Desenvolvimento de microsserviços e software sob medida com excelência técnica e foco em resultados.
-                    </p>
-                    <div class="mt-4">
-                        <a href="#" class="social-icon">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="bi bi-github"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 mb-4 mb-lg-0">
-                    <h5>Empresa</h5>
-                    <a href="#services" class="footer-link">Serviços</a>
-                    <a href="#why-choose" class="footer-link">Diferenciais</a>
-                    <a href="#solutions" class="footer-link">Soluções</a>
-                    <a href="#contact" class="footer-link">Contato</a>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 mb-4 mb-lg-0">
-                    <h5>Serviços</h5>
-                    <a href="#" class="footer-link">Microsserviços</a>
-                    <a href="#" class="footer-link">Software Customizado</a>
-                    <a href="#" class="footer-link">Automação</a>
-                    <a href="#" class="footer-link">Integração</a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <h5>Contato</h5>
-                    <p style="color: rgba(255, 255, 255, 0.7);">
-                        <strong>Email:</strong> contato@risebit.com.br<br>
-                        <strong>Telefone:</strong> +55 (11) 9999-9999<br>
-                        <strong>Horário:</strong> Seg-Sex, 9h-18h
-                    </p>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <h5>Risebit</h5>
+            <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.8">
+              Desenvolvimento de microsserviços e software sob medida com
+              excelência técnica e foco em resultados.
+            </p>
+            <div class="mt-4">
+              <a href="#" class="social-icon">
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="bi bi-github"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="bi bi-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="bi bi-instagram"></i>
+              </a>
             </div>
-            <hr style="border-color: rgba(255, 255, 255, 0.1); margin: 3rem 0 1.5rem;">
-            <div class="text-center" style="color: rgba(255, 255, 255, 0.6);">
-                <p class="mb-0">&copy; 2026 Risebit. Todos os direitos reservados.</p>
-            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-6 mb-4 mb-lg-0">
+            <h5>Empresa</h5>
+            <a href="#services" class="footer-link">Serviços</a>
+            <a href="#why-choose" class="footer-link">Diferenciais</a>
+            <a href="#solutions" class="footer-link">Soluções</a>
+            <a href="#contact" class="footer-link">Contato</a>
+          </div>
+          <div class="col-lg-2 col-md-3 col-6 mb-4 mb-lg-0">
+            <h5>Serviços</h5>
+            <a href="#" class="footer-link">Microsserviços</a>
+            <a href="#" class="footer-link">Software Customizado</a>
+            <a href="#" class="footer-link">Automação</a>
+            <a href="#" class="footer-link">Integração</a>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5>Contato</h5>
+            <p style="color: rgba(255, 255, 255, 0.7)">
+              <strong>Email:</strong> contato@risebit.com.br<br />
+              <strong>Telefone:</strong> +55 (11) 9999-9999<br />
+              <strong>Horário:</strong> Seg-Sex, 9h-18h
+            </p>
+          </div>
         </div>
+        <hr
+          style="border-color: rgba(255, 255, 255, 0.1); margin: 3rem 0 1.5rem"
+        />
+        <div class="text-center" style="color: rgba(255, 255, 255, 0.6)">
+          <p class="mb-0">&copy; 2026 Risebit. Todos os direitos reservados.</p>
+        </div>
+      </div>
     </footer>
 
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -800,352 +875,693 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- React & ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script>
 
     <!-- Babel Standalone for JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <!-- React Components -->
     <script type="text/babel">
-        const { useState, useEffect } = React;
+      const { useState, useEffect } = React;
 
-// Services Component
-const ServicesComponent = () => {
-    const iconSVGs = {
-        code: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>,
-        storage: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>,
-        settings: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>,
-        link: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>,
-        brain: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>,
-        cloud: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
-    };
-
-    const services = [
-        {
-            icon: 'code',
-            title: 'Software Sob Demanda',
-            description: 'Desenvolvimento de aplicações personalizadas, desde MVPs até sistemas enterprise complexos, utilizando as melhores práticas de engenharia de software.'
-        },
-        {
-            icon: 'storage',
-            title: 'Arquitetura de Microsserviços',
-            description: 'Projetamos e implementamos arquiteturas distribuídas escaláveis, resilientes e de alta performance para suportar o crescimento do seu negócio.'
-        },
-        {
-            icon: 'settings',
-            title: 'Automação de Processos',
-            description: 'Eliminamos tarefas repetitivas e otimizamos fluxos operacionais através de automação inteligente, reduzindo custos e aumentando eficiência.'
-        },
-        {
-            icon: 'link',
-            title: 'Integração de Sistemas',
-            description: 'Conectamos seus sistemas legados e modernos, garantindo comunicação fluida, segurança de dados e sincronização em tempo real.'
-        },
-        {
-            icon: 'brain',
-            title: 'IA e Machine Learning',
-            description: 'Desenvolvemos soluções de inteligência artificial customizadas para análise preditiva, automação cognitiva e tomada de decisões baseada em dados.'
-        },
-        {
-            icon: 'cloud',
-            title: 'Cloud & DevOps',
-            description: 'Migração para nuvem, infraestrutura como código, CI/CD e monitoramento contínuo para garantir disponibilidade e performance máxima.'
-        }
-    ];
-
-    return (
-        <>
-            {services.map((service, index) => (
-                <div key={index} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay={index * 100}>
-                    <div className="service-card">
-                        <div className="service-icon">
-                            {iconSVGs[service.icon]}
-                        </div>
-                        <h3 className="service-title">{service.title}</h3>
-                        <p className="service-description">{service.description}</p>
-                        <a href="#contact" className="service-link">
-                            Saiba mais 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{display: 'inline', marginLeft: '8px'}}><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-            ))}
-        </>
-    );
-};
-
-// Features Component
-const FeaturesComponent = () => {
-    const iconSVGs = {
-        premium: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>,
-        shield: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>,
-        trending: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>,
-        speed: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4"></path><path d="m16.2 7.8 2.9-2.9"></path><path d="M18 12h4"></path><path d="m16.2 16.2 2.9 2.9"></path><path d="M12 18v4"></path><path d="m4.9 19.1 2.9-2.9"></path><path d="M2 12h4"></path><path d="m4.9 4.9 2.9 2.9"></path></svg>,
-        support: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>,
-        agile: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
-    };
-
-    const features = [
-        {
-            icon: 'premium',
-            title: 'Excelência Técnica',
-            description: 'Time sênior com certificações e experiência comprovada em projetos de alta complexidade e escala global.'
-        },
-        {
-            icon: 'shield',
-            title: 'Segurança Avançada',
-            description: 'Implementamos as melhores práticas de segurança (OWASP, ISO 27001) em todas as camadas da aplicação.'
-        },
-        {
-            icon: 'trending',
-            title: 'Escalabilidade Garantida',
-            description: 'Arquiteturas preparadas para crescer de centenas a milhões de usuários sem perda de performance.'
-        },
-        {
-            icon: 'speed',
-            title: 'Alta Performance',
-            description: 'Otimização contínua para entregar aplicações rápidas, responsivas e com excelente experiência de usuário.'
-        },
-        {
-            icon: 'support',
-            title: 'Suporte Dedicado',
-            description: 'Acompanhamento pós-entrega com SLA definido, monitoramento 24/7 e equipe sempre disponível.'
-        },
-        {
-            icon: 'agile',
-            title: 'Metodologia Ágil',
-            description: 'Entregas incrementais, transparência total e adaptação rápida às mudanças do mercado e negócio.'
-        }
-    ];
-
-    return (
-        <>
-            {features.map((feature, index) => (
-                <div key={index} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay={index * 100}>
-                    <div className="feature-card">
-                        <div className="feature-icon">
-                            {iconSVGs[feature.icon]}
-                        </div>
-                        <h3 className="feature-title">{feature.title}</h3>
-                        <p className="feature-description">{feature.description}</p>
-                    </div>
-                </div>
-            ))}
-        </>
-    );
-};
-
-// Solutions Component
-const SolutionsComponent = () => {
-    const iconSVGs = {
-        crm: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>,
-        analytics: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>,
-        inventory: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-    };
-
-    const solutions = [
-        {
-            icon: 'crm',
-            title: 'CRM Personalizado',
-            description: 'Sistema completo de gestão de relacionamento com cliente, integrado ao seu processo comercial e marketing, com automações e dashboards em tempo real.'
-        },
-        {
-            icon: 'analytics',
-            title: 'Business Intelligence',
-            description: 'Plataforma de análise de dados com visualizações interativas, KPIs personalizados e relatórios automatizados para decisões estratégicas baseadas em dados.'
-        },
-        {
-            icon: 'inventory',
-            title: 'Gestão Operacional',
-            description: 'ERP customizado para controle de estoque, logística, financeiro e vendas, com integração a e-commerce e marketplaces.'
-        }
-    ];
-
-    return (
-        <>
-            {solutions.map((solution, index) => (
-                <div key={index} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay={index * 100}>
-                    <div className="solution-card">
-                        <div className="service-icon">
-                            {iconSVGs[solution.icon]}
-                        </div>
-                        <h3 className="service-title">{solution.title}</h3>
-                        <p className="service-description">{solution.description}</p>
-                        <a href="#contact" className="service-link">
-                            Solicitar demonstração 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{display: 'inline', marginLeft: '8px'}}><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-            ))}
-        </>
-    );
-};
-
-        // Contact Form Component
-        const ContactForm = () => {
-            const [formData, setFormData] = useState({
-                name: '',
-                email: '',
-                phone: '',
-                company: '',
-                message: ''
-            });
-
-            const [status, setStatus] = useState('');
-
-            const handleChange = (e) => {
-                setFormData({
-                    ...formData,
-                    [e.target.name]: e.target.value
-                });
-            };
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                setStatus('sending');
-                
-                // Simulação de envio
-                setTimeout(() => {
-                    setStatus('success');
-                    setFormData({
-                        name: '',
-                        email: '',
-                        phone: '',
-                        company: '',
-                        message: ''
-                    });
-                    
-                    setTimeout(() => {
-                        setStatus('');
-                    }, 5000);
-                }, 1500);
-            };
-
-            return (
-                <form onSubmit={handleSubmit}>
-                    <div className="row g-3">
-                        <div className="col-md-6">
-                            <label htmlFor="name" className="form-label fw-semibold">Nome Completo *</label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
-                                id="name" 
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                required 
-                            />
-                        </div>
-                        <div className="col-md-6">
-                            <label htmlFor="email" className="form-label fw-semibold">Email Corporativo *</label>
-                            <input 
-                                type="email" 
-                                className="form-control" 
-                                id="email" 
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required 
-                            />
-                        </div>
-                        <div className="col-md-6">
-                            <label htmlFor="phone" className="form-label fw-semibold">Telefone *</label>
-                            <input 
-                                type="tel" 
-                                className="form-control" 
-                                id="phone" 
-                                name="phone"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                required 
-                            />
-                        </div>
-                        <div className="col-md-6">
-                            <label htmlFor="company" className="form-label fw-semibold">Empresa</label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
-                                id="company" 
-                                name="company"
-                                value={formData.company}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="col-12">
-                            <label htmlFor="message" className="form-label fw-semibold">Conte-nos sobre seu projeto *</label>
-                            <textarea 
-                                className="form-control" 
-                                id="message" 
-                                name="message"
-                                rows="5"
-                                value={formData.message}
-                                onChange={handleChange}
-                                required
-                            ></textarea>
-                        </div>
-                        <div className="col-12">
-                            <button 
-                                type="submit" 
-                                className="btn-primary-custom w-100 py-3"
-                                disabled={status === 'sending'}
-                            >
-                                {status === 'sending' ? 'Enviando...' : 'Enviar Mensagem'}
-                            </button>
-                        </div>
-                        {status === 'success' && (
-                            <div className="col-12">
-                                <div className="alert alert-success mb-0" role="alert">
-                                    <strong>Mensagem enviada com sucesso!</strong> Nossa equipe entrará em contato em breve.
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </form>
-            );
+      // Services Component
+      const ServicesComponent = () => {
+        const iconSVGs = {
+          code: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          ),
+          storage: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+          ),
+          settings: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          ),
+          link: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+          ),
+          brain: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path>
+              <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path>
+            </svg>
+          ),
+          cloud: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+            </svg>
+          ),
         };
 
-        // Render Components
-        ReactDOM.render(<ServicesComponent />, document.getElementById('services-container'));
-        ReactDOM.render(<FeaturesComponent />, document.getElementById('features-container'));
-        ReactDOM.render(<SolutionsComponent />, document.getElementById('solutions-container'));
-        ReactDOM.render(<ContactForm />, document.getElementById('contact-form-container'));
+        const services = [
+          {
+            icon: "code",
+            title: "Software Sob Demanda",
+            description:
+              "Desenvolvimento de aplicações personalizadas, desde MVPs até sistemas enterprise complexos, utilizando as melhores práticas de engenharia de software.",
+          },
+          {
+            icon: "storage",
+            title: "Arquitetura de Microsserviços",
+            description:
+              "Projetamos e implementamos arquiteturas distribuídas escaláveis, resilientes e de alta performance para suportar o crescimento do seu negócio.",
+          },
+          {
+            icon: "settings",
+            title: "Automação de Processos",
+            description:
+              "Eliminamos tarefas repetitivas e otimizamos fluxos operacionais através de automação inteligente, reduzindo custos e aumentando eficiência.",
+          },
+          {
+            icon: "link",
+            title: "Integração de Sistemas",
+            description:
+              "Conectamos seus sistemas legados e modernos, garantindo comunicação fluida, segurança de dados e sincronização em tempo real.",
+          },
+          {
+            icon: "brain",
+            title: "IA e Machine Learning",
+            description:
+              "Desenvolvemos soluções de inteligência artificial customizadas para análise preditiva, automação cognitiva e tomada de decisões baseada em dados.",
+          },
+          {
+            icon: "cloud",
+            title: "Cloud & DevOps",
+            description:
+              "Migração para nuvem, infraestrutura como código, CI/CD e monitoramento contínuo para garantir disponibilidade e performance máxima.",
+          },
+        ];
+
+        return (
+          <>
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="col-lg-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <div className="service-card">
+                  <div className="service-icon">{iconSVGs[service.icon]}</div>
+                  <h3 className="service-title">{service.title}</h3>
+                  <p className="service-description">{service.description}</p>
+                  <a href="#contact" className="service-link">
+                    Saiba mais
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ display: "inline", marginLeft: "8px" }}
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </>
+        );
+      };
+
+      // Features Component
+      const FeaturesComponent = () => {
+        const iconSVGs = {
+          premium: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+              <path d="M4 22h16"></path>
+              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+            </svg>
+          ),
+          shield: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="M9 12l2 2 4-4"></path>
+            </svg>
+          ),
+          trending: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+          ),
+          speed: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 2v4"></path>
+              <path d="m16.2 7.8 2.9-2.9"></path>
+              <path d="M18 12h4"></path>
+              <path d="m16.2 16.2 2.9 2.9"></path>
+              <path d="M12 18v4"></path>
+              <path d="m4.9 19.1 2.9-2.9"></path>
+              <path d="M2 12h4"></path>
+              <path d="m4.9 4.9 2.9 2.9"></path>
+            </svg>
+          ),
+          support: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          ),
+          agile: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="22"></line>
+            </svg>
+          ),
+        };
+
+        const features = [
+          {
+            icon: "premium",
+            title: "Excelência Técnica",
+            description:
+              "Time sênior com certificações e experiência comprovada em projetos de alta complexidade e escala global.",
+          },
+          {
+            icon: "shield",
+            title: "Segurança Avançada",
+            description:
+              "Implementamos as melhores práticas de segurança (OWASP, ISO 27001) em todas as camadas da aplicação.",
+          },
+          {
+            icon: "trending",
+            title: "Escalabilidade Garantida",
+            description:
+              "Arquiteturas preparadas para crescer de centenas a milhões de usuários sem perda de performance.",
+          },
+          {
+            icon: "speed",
+            title: "Alta Performance",
+            description:
+              "Otimização contínua para entregar aplicações rápidas, responsivas e com excelente experiência de usuário.",
+          },
+          {
+            icon: "support",
+            title: "Suporte Dedicado",
+            description:
+              "Acompanhamento pós-entrega com SLA definido, monitoramento 24/7 e equipe sempre disponível.",
+          },
+          {
+            icon: "agile",
+            title: "Metodologia Ágil",
+            description:
+              "Entregas incrementais, transparência total e adaptação rápida às mudanças do mercado e negócio.",
+          },
+        ];
+
+        return (
+          <>
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="col-lg-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <div className="feature-card">
+                  <div className="feature-icon">{iconSVGs[feature.icon]}</div>
+                  <h3 className="feature-title">{feature.title}</h3>
+                  <p className="feature-description">{feature.description}</p>
+                </div>
+              </div>
+            ))}
+          </>
+        );
+      };
+
+      // Solutions Component
+      const SolutionsComponent = () => {
+        const iconSVGs = {
+          crm: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          ),
+          analytics: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="12" y1="20" x2="12" y2="10"></line>
+              <line x1="18" y1="20" x2="18" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="16"></line>
+            </svg>
+          ),
+          inventory: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          ),
+        };
+
+        const solutions = [
+          {
+            icon: "crm",
+            title: "CRM Personalizado",
+            description:
+              "Sistema completo de gestão de relacionamento com cliente, integrado ao seu processo comercial e marketing, com automações e dashboards em tempo real.",
+          },
+          {
+            icon: "analytics",
+            title: "Business Intelligence",
+            description:
+              "Plataforma de análise de dados com visualizações interativas, KPIs personalizados e relatórios automatizados para decisões estratégicas baseadas em dados.",
+          },
+          {
+            icon: "inventory",
+            title: "Gestão Operacional",
+            description:
+              "ERP customizado para controle de estoque, logística, financeiro e vendas, com integração a e-commerce e marketplaces.",
+          },
+        ];
+
+        return (
+          <>
+            {solutions.map((solution, index) => (
+              <div
+                key={index}
+                className="col-lg-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <div className="solution-card">
+                  <div className="service-icon">{iconSVGs[solution.icon]}</div>
+                  <h3 className="service-title">{solution.title}</h3>
+                  <p className="service-description">{solution.description}</p>
+                  <a href="#contact" className="service-link">
+                    Solicitar demonstração
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ display: "inline", marginLeft: "8px" }}
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </>
+        );
+      };
+
+      // Contact Form Component
+      const ContactForm = () => {
+        const [formData, setFormData] = useState({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: "",
+        });
+
+        const [status, setStatus] = useState("");
+
+        const handleChange = (e) => {
+          setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+          });
+        };
+
+        const handleSubmit = async (e) => {
+          e.preventDefault();
+          setStatus("sending");
+
+          // URL do webhook do Google Apps Script
+          // Para teste local: http://localhost:3000/webhook
+          // Para produção: substitua pela URL do seu Google Apps Script
+          const WEBHOOK_URL =
+            "https://script.google.com/macros/s/AKfycbzxelYSszKD6QWjxSPdmgEG1HT2AExClCT1mxFlt3oKmGXd45JDpQtIH7tEqFNNYDH_/exec";
+
+          try {
+            const response = await fetch(WEBHOOK_URL, {
+              method: "POST",
+              mode: "no-cors",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
+
+            // Com no-cors, não conseguimos ler a resposta, mas se chegou aqui, foi enviado
+            setStatus("success");
+            setFormData({
+              name: "",
+              email: "",
+              phone: "",
+              company: "",
+              message: "",
+            });
+
+            // Limpar status após 5 segundos
+            setTimeout(() => {
+              setStatus("");
+            }, 5000);
+          } catch (error) {
+            console.error("Erro ao enviar formulário:", error);
+            setStatus("error");
+
+            // Limpar status de erro após 5 segundos
+            setTimeout(() => {
+              setStatus("");
+            }, 5000);
+          }
+        };
+
+        return (
+          <form onSubmit={handleSubmit}>
+            <div className="row g-3">
+              <div className="col-md-6">
+                <label htmlFor="name" className="form-label fw-semibold">
+                  Nome Completo *
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="col-md-6">
+                <label htmlFor="email" className="form-label fw-semibold">
+                  Email Corporativo *
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="col-md-6">
+                <label htmlFor="phone" className="form-label fw-semibold">
+                  Telefone *
+                </label>
+                <input
+                  type="tel"
+                  className="form-control"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="col-md-6">
+                <label htmlFor="company" className="form-label fw-semibold">
+                  Empresa
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="col-12">
+                <label htmlFor="message" className="form-label fw-semibold">
+                  Conte-nos sobre seu projeto *
+                </label>
+                <textarea
+                  className="form-control"
+                  id="message"
+                  name="message"
+                  rows="5"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
+              </div>
+              <div className="col-12">
+                <button
+                  type="submit"
+                  className="btn-primary-custom w-100 py-3"
+                  disabled={status === "sending"}
+                >
+                  {status === "sending" ? "Enviando..." : "Enviar Mensagem"}
+                </button>
+              </div>
+              {status === "success" && (
+                <div className="col-12">
+                  <div className="alert alert-success mb-0" role="alert">
+                    <strong>Mensagem enviada com sucesso!</strong> Nossa equipe
+                    entrará em contato em breve.
+                  </div>
+                </div>
+              )}
+            </div>
+          </form>
+        );
+      };
+
+      // Render Components
+      ReactDOM.render(
+        <ServicesComponent />,
+        document.getElementById("services-container"),
+      );
+      ReactDOM.render(
+        <FeaturesComponent />,
+        document.getElementById("features-container"),
+      );
+      ReactDOM.render(
+        <SolutionsComponent />,
+        document.getElementById("solutions-container"),
+      );
+      ReactDOM.render(
+        <ContactForm />,
+        document.getElementById("contact-form-container"),
+      );
     </script>
 
     <!-- Initialize AOS -->
     <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
-        });
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+        offset: 100,
+      });
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
             });
+          }
         });
+      });
 
-        // Navbar shadow on scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
-            } else {
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
-            }
-        });
+      // Navbar shadow on scroll
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.style.boxShadow = "0 4px 30px rgba(0, 0, 0, 0.1)";
+        } else {
+          navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.05)";
+        }
+      });
     </script>
-
-</body>
+  </body>
 </html>
