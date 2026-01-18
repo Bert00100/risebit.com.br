@@ -688,7 +688,7 @@
       </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Stats Section 
     <section class="stats-section">
       <div class="container">
         <div class="row">
@@ -719,7 +719,7 @@
         </div>
       </div>
     </section>
-
+    -->
     <!-- Services Section -->
     <section id="services" class="py-5" style="padding: 6rem 0">
       <div class="container">
@@ -1364,16 +1364,66 @@
         });
 
         const [status, setStatus] = useState("");
+        const [errors, setErrors] = useState({
+          email: "",
+          phone: "",
+        });
+
+        // Regex para validação
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const phoneRegex = /^(?:\+55\s?)?(?:\(?\d{2}\)?\s?)?\d{4,5}-?\d{4}$/;
+
+        const validateEmail = (email) => {
+          if (!emailRegex.test(email)) {
+            return "Digite um email válido (exemplo: usuario@empresa.com)";
+          }
+          return "";
+        };
+
+        const validatePhone = (phone) => {
+          if (!phoneRegex.test(phone)) {
+            return "Digite um telefone válido (exemplo: (11) 98765-4321 ou 11987654321)";
+          }
+          return "";
+        };
 
         const handleChange = (e) => {
+          const { name, value } = e.target;
+
           setFormData({
             ...formData,
-            [e.target.name]: e.target.value,
+            [name]: value,
           });
+
+          // Validar em tempo real
+          if (name === "email") {
+            setErrors({
+              ...errors,
+              email: value ? validateEmail(value) : "",
+            });
+          } else if (name === "phone") {
+            setErrors({
+              ...errors,
+              phone: value ? validatePhone(value) : "",
+            });
+          }
         };
 
         const handleSubmit = async (e) => {
           e.preventDefault();
+
+          // Validar antes de enviar
+          const emailError = validateEmail(formData.email);
+          const phoneError = validatePhone(formData.phone);
+
+          if (emailError || phoneError) {
+            setErrors({
+              email: emailError,
+              phone: phoneError,
+            });
+            return;
+          }
+
           setStatus("sending");
 
           // URL do webhook do Google Apps Script
@@ -1406,6 +1456,12 @@
             setTimeout(() => {
               setStatus("");
             }, 5000);
+
+            // Limpar erros
+            setErrors({
+              email: "",
+              phone: "",
+            });
           } catch (error) {
             console.error("Erro ao enviar formulário:", error);
             setStatus("error");
@@ -1440,13 +1496,17 @@
                 </label>
                 <input
                   type="email"
-                  className="form-control"
+                  className={`form-control ${errors.email ? "is-invalid" : ""}`}
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  placeholder="usuario@empresa.com"
                   required
                 />
+                {errors.email && (
+                  <div className="invalid-feedback d-block">{errors.email}</div>
+                )}
               </div>
               <div className="col-md-6">
                 <label htmlFor="phone" className="form-label fw-semibold">
@@ -1454,13 +1514,17 @@
                 </label>
                 <input
                   type="tel"
-                  className="form-control"
+                  className={`form-control ${errors.phone ? "is-invalid" : ""}`}
                   id="phone"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  placeholder="(11) 98765-4321"
                   required
                 />
+                {errors.phone && (
+                  <div className="invalid-feedback d-block">{errors.phone}</div>
+                )}
               </div>
               <div className="col-md-6">
                 <label htmlFor="company" className="form-label fw-semibold">
@@ -1503,6 +1567,14 @@
                   <div className="alert alert-success mb-0" role="alert">
                     <strong>Mensagem enviada com sucesso!</strong> Nossa equipe
                     entrará em contato em breve.
+                  </div>
+                </div>
+              )}
+              {status === "error" && (
+                <div className="col-12">
+                  <div className="alert alert-danger mb-0" role="alert">
+                    <strong>Erro ao enviar!</strong> Por favor, tente novamente
+                    mais tarde.
                   </div>
                 </div>
               )}
