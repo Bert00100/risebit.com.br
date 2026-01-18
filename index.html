@@ -159,6 +159,9 @@
         background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
         position: relative;
         overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
         padding: 8rem 0 6rem;
       }
 
@@ -237,6 +240,9 @@
       .stats-section {
         background: var(--dark-black);
         color: white;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
         padding: 4rem 0;
       }
 
@@ -362,6 +368,9 @@
       /* Why Choose Section */
       .why-choose-section {
         background: var(--light-gray);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
         padding: 6rem 0;
       }
 
@@ -414,6 +423,9 @@
 
       /* Solutions Section */
       .solutions-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
         padding: 6rem 0;
       }
 
@@ -481,6 +493,9 @@
           var(--dark-black) 0%,
           var(--medium-gray) 100%
         );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
         padding: 6rem 0;
         color: white;
         position: relative;
@@ -579,6 +594,14 @@
         box-shadow: 0 0 0 0.25rem rgba(244, 110, 22, 0.1);
       }
 
+      /* Full Height Sections */
+      #services,
+      #contact {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
       /* Responsive */
       @media (max-width: 768px) {
         .hero-title {
@@ -595,6 +618,17 @@
 
         .stat-number {
           font-size: 2rem;
+        }
+
+        /* Ajustar seções em mobile para não forçar 100vh */
+        .hero-section,
+        .stats-section,
+        .why-choose-section,
+        .solutions-section,
+        .cta-section,
+        #services,
+        #contact {
+          min-height: auto;
         }
       }
 
@@ -1424,6 +1458,32 @@
             return;
           }
 
+          // Formatar telefone antes de enviar
+          const formatPhoneForSubmit = (phone) => {
+            // Remove todos os caracteres não numéricos
+            const cleaned = phone.replace(/\D/g, "");
+
+            // Remove o código do país se existir
+            const phoneNumber = cleaned.startsWith("55")
+              ? cleaned.substring(2)
+              : cleaned;
+
+            // Formata de acordo com o tamanho
+            if (phoneNumber.length === 11) {
+              // Formato: (XX) XXXXX-XXXX
+              return `(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2, 7)}-${phoneNumber.substring(7)}`;
+            } else if (phoneNumber.length === 10) {
+              // Formato: (XX) XXXX-XXXX
+              return `(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2, 6)}-${phoneNumber.substring(6)}`;
+            }
+            return phone; // Retorna original se não estiver no formato esperado
+          };
+
+          const formattedData = {
+            ...formData,
+            phone: formatPhoneForSubmit(formData.phone),
+          };
+
           setStatus("sending");
 
           // URL do webhook do Google Apps Script
@@ -1439,7 +1499,7 @@
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify(formData),
+              body: JSON.stringify(formattedData),
             });
 
             // Com no-cors, não conseguimos ler a resposta, mas se chegou aqui, foi enviado
