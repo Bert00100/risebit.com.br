@@ -493,9 +493,6 @@
           var(--dark-black) 0%,
           var(--medium-gray) 100%
         );
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
         padding: 6rem 0;
         color: white;
         position: relative;
@@ -625,7 +622,6 @@
         .stats-section,
         .why-choose-section,
         .solutions-section,
-        .cta-section,
         #services,
         #contact {
           min-height: auto;
@@ -1424,22 +1420,49 @@
         const handleChange = (e) => {
           const { name, value } = e.target;
 
-          setFormData({
-            ...formData,
-            [name]: value,
-          });
+          // Formatar telefone enquanto digita
+          if (name === "phone") {
+            // Remove tudo que não é dígito
+            const cleaned = value.replace(/\D/g, "");
 
-          // Validar em tempo real
-          if (name === "email") {
+            // Limita a 11 dígitos
+            const limited = cleaned.substring(0, 11);
+
+            // Aplica a máscara conforme digita
+            let formatted = limited;
+            if (limited.length > 0) {
+              if (limited.length <= 2) {
+                formatted = `(${limited}`;
+              } else if (limited.length <= 7) {
+                formatted = `(${limited.substring(0, 2)}) ${limited.substring(2)}`;
+              } else {
+                formatted = `(${limited.substring(0, 2)}) ${limited.substring(2, 7)}-${limited.substring(7)}`;
+              }
+            }
+
+            setFormData({
+              ...formData,
+              [name]: formatted,
+            });
+
+            // Validar
             setErrors({
               ...errors,
-              email: value ? validateEmail(value) : "",
+              phone: limited.length >= 10 ? validatePhone(formatted) : "",
             });
-          } else if (name === "phone") {
-            setErrors({
-              ...errors,
-              phone: value ? validatePhone(value) : "",
+          } else {
+            setFormData({
+              ...formData,
+              [name]: value,
             });
+
+            // Validar em tempo real
+            if (name === "email") {
+              setErrors({
+                ...errors,
+                email: value ? validateEmail(value) : "",
+              });
+            }
           }
         };
 
